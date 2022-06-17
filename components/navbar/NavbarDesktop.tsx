@@ -1,16 +1,21 @@
 import React from 'react';
 import { Box, IconButton, Popover, Stack, Typography } from '@mui/material';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import { useRouter } from 'next/router';
 
 import Link from 'next/link';
 import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
+import { Instagram } from '../Icons';
 // import { LogoLarge } from '../Logos';
 // import { Settings, MenuHamburger } from '../Icons';
 
 export default function Navbar() {
   const { isMobile, maxWidthDesktop, paddingXDesktop } = useAppDimensions();
+  const router = useRouter();
+
+  console.log(router.pathname);
 
   const colors = Theme.palette;
 
@@ -70,18 +75,43 @@ export default function Navbar() {
         <Link href="/">
           <a>
             {/* <LogoLarge width={138} height={86} /> */}
-            <Typography variant="h2">Inês Cruz</Typography>
+            <Typography variant="h2" color="black">
+              Inês Cruz
+            </Typography>
           </a>
         </Link>
 
+        {router.pathname !== '/' && (
+          <Stack
+            className="user-link"
+            direction="row"
+            alignItems="center"
+            spacing={1}
+          >
+            <Link
+              href="https://www.instagram.com/ines.cruz.8/?hl=en"
+              target="_blank"
+            >
+              <a target="_blank">
+                <Instagram color="black" size={35} />
+              </a>
+            </Link>
+          </Stack>
+        )}
         <Stack
           className="user-link"
           direction="row"
           alignItems="center"
           spacing={1}
         >
-          {/* <Typography>Alexandre Moreira</Typography> */}
-          <DesktopMenu />
+          <Link
+            href="https://www.instagram.com/ines.cruz.8/?hl=en"
+            target="_blank"
+          >
+            <a target="_blank">
+              <Instagram color="black" size={35} />
+            </a>
+          </Link>
         </Stack>
       </Box>
     </Box>
