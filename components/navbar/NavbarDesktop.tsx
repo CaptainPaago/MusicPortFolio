@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-
 import Link from 'next/link';
+
 // import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
@@ -20,9 +20,10 @@ export default function Navbar() {
 
   return (
     <Box
+      // bgcolor="black.main"
       alignItems="center"
-      bgcolor="black.main"
       className="navbar navbar-desktop"
+      id="navbar-desktop-gradient"
       justifyContent="center"
       left={0}
       maxHeight="115px"

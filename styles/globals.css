@@ -6,6 +6,7 @@ body {
   max-width: 100%;
   min-height: 100vh;
   padding: 0;
+  background: #000;
   /* font-family: 'Sarabun', sans-serif; */
 }
 
@@ -48,4 +49,12 @@ a {
 
 .css-1gfbdld-MuiPaper-root-MuiAccordion-root::before {
   background-color: white !important;
+}
+
+#navbar-desktop-gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.58) 100%
+  );
 }
