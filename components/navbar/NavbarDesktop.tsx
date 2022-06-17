@@ -1,10 +1,9 @@
 import React from 'react';
-import { Box, IconButton, Popover, Stack, Typography } from '@mui/material';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import { Box, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
 import Link from 'next/link';
-import NavbarMenu from './NavbarMenu';
+// import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
 import { Instagram } from '../Icons';
@@ -12,48 +11,17 @@ import { Instagram } from '../Icons';
 // import { Settings, MenuHamburger } from '../Icons';
 
 export default function Navbar() {
-  const { isMobile, maxWidthDesktop, paddingXDesktop } = useAppDimensions();
+  const { maxWidthDesktop, paddingXDesktop } = useAppDimensions();
   const router = useRouter();
 
   console.log(router.pathname);
 
   const colors = Theme.palette;
 
-  const DesktopMenu = () => (
-    <PopupState variant="popover" popupId="navbar-menu">
-      {(popupState) => (
-        <div>
-          <IconButton {...bindTrigger(popupState)}>
-            {isMobile ? (
-              //   <MenuHamburger size={50} color={colors.primary.main} />
-              <Typography>menu</Typography>
-            ) : (
-              //   <Settings size={50} color={colors.primary.main} />
-              <Typography>close</Typography>
-            )}
-          </IconButton>
-          <Popover
-            {...bindPopover(popupState)}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: -45,
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-          >
-            <NavbarMenu />
-          </Popover>
-        </div>
-      )}
-    </PopupState>
-  );
-
   return (
     <Box
       alignItems="center"
-      bgcolor="#fff"
+      bgcolor="black.main"
       className="navbar navbar-desktop"
       justifyContent="center"
       left={0}
@@ -67,6 +35,7 @@ export default function Navbar() {
       zIndex={100}
     >
       <Box
+        alignItems="center"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -74,8 +43,7 @@ export default function Navbar() {
       >
         <Link href="/">
           <a>
-            {/* <LogoLarge width={138} height={86} /> */}
-            <Typography variant="h2" color="black">
+            <Typography variant="h2" color="white.main">
               Inês Cruz
             </Typography>
           </a>
@@ -85,31 +53,29 @@ export default function Navbar() {
           <Stack
             className="user-link"
             direction="row"
-            alignItems="center"
+            justifyContent="space-between"
             spacing={1}
+            height="100%"
           >
-            <Link
-              href="https://www.instagram.com/ines.cruz.8/?hl=en"
-              target="_blank"
-            >
-              <a target="_blank">
-                <Instagram color="black" size={35} />
+            <Link href="/my-work">
+              <a>
+                <Typography variant="h4" color="white.main">
+                  my work
+                </Typography>
               </a>
             </Link>
           </Stack>
         )}
+
         <Stack
           className="user-link"
           direction="row"
-          alignItems="center"
+          justifyContent="space-between"
           spacing={1}
         >
-          <Link
-            href="https://www.instagram.com/ines.cruz.8/?hl=en"
-            target="_blank"
-          >
+          <Link href="https://www.instagram.com/ines.cruz.8/?hl=en">
             <a target="_blank">
-              <Instagram color="black" size={35} />
+              <Instagram color={colors.white.main} size={35} />
             </a>
           </Link>
         </Stack>
