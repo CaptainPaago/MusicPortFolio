@@ -12,7 +12,7 @@ export default function useOdinDimensions() {
     if (DeviceDetect.isMobile) {
       setIsMobile(true);
     }
-  }, [DeviceDetect.isMobile]);
+  }, []);
 
   const marginBotttom = isMobile ? '50px' : '80px';
   const maxWidthDesktop = '1600px';

@@ -1,9 +1,25 @@
 html,
 body {
-  padding: 0;
+  display: flex;
+  flex: 1;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Sarabun', sans-serif;
+}
+
+#__next {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex: 1;
+  height: 100%;
+  margin: 0;
+  max-width: 100vw;
+  padding: 0;
+  width: 100%;
 }
 
 a {
@@ -13,4 +29,23 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.navbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.css-1gfbdld-MuiPaper-root-MuiAccordion-root::before {
+  background-color: white !important;
 }
