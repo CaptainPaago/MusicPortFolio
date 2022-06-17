@@ -14,7 +14,12 @@ const Home: NextPage = () => {
   return (
     <Layout pageTitle="Odin" centered>
       <Stack flex={1} justifyContent="flex-end" direction="column">
-        <Stack direction="column" spacing="20px" width="475px">
+        <Stack
+          direction="column"
+          spacing="20px"
+          width="475px"
+          marginBottom="40px"
+        >
           <Typography color="white.main" variant="h2">
             violin player
           </Typography>
