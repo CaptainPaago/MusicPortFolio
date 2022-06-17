@@ -70,7 +70,7 @@ export default function Navbar() {
         <Link href="/">
           <a>
             {/* <LogoLarge width={138} height={86} /> */}
-            <Typography>logo</Typography>
+            <Typography variant="h2">Inês Cruz</Typography>
           </a>
         </Link>
 

@@ -3,9 +3,13 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Palette {
     neutral: Palette['primary'];
+    white: Palette['primary'];
+    black: Palette['primary'];
   }
   interface PaletteOptions {
     neutral: PaletteOptions['primary'];
+    white: PaletteOptions['primary'];
+    black: PaletteOptions['primary'];
   }
 }
 
@@ -13,12 +17,13 @@ const Theme = createTheme({
   palette: {
     neutral: { main: '#787878' },
     primary: {
-      main: '#0867B0',
-      400: '#4E8EBF',
+      main: '#FADD69',
+      //   400: '#4E8EBF',
     },
+    white: { main: '#EEEEEE', 200: '#CACACA' },
+    black: { main: '#000000', 800: '#2D2D2D', 700: '#393939', 600: '#4E4E4E' },
     success: { main: '#1FBD68' },
     error: { main: '#D53726' },
-    secondary: { main: '#F3FDFA' },
     warning: { main: '#FDE151' },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
@@ -29,7 +34,8 @@ const Theme = createTheme({
     tonalOffset: 0.2,
   },
   typography: {
-    fontFamily: ['Sarabun', 'sans-serif'].join(','),
+    // fontFamily: ['Sarabun', 'sans-serif'].join(','),
+    fontFamily: `'Kurale', serif;, 'Laila', sans-serif`,
     button: {
       textTransform: 'none',
     },

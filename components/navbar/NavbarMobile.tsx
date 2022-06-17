@@ -32,7 +32,7 @@ export default function Navbar() {
         <Link href="/">
           <a>
             {/* <LogoSmall width={50} height={50} /> */}
-            <Typography>logo</Typography>
+            <Typography>Inês Cruz</Typography>
           </a>
         </Link>
       </Box>

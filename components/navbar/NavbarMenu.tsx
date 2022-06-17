@@ -5,7 +5,7 @@ import { Typography, Stack } from '@mui/material';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
 
-export default function NavbarMenuDesktop({
+export default function NavbarMenu({
   handleClose,
 }: {
   handleClose?: () => void;
