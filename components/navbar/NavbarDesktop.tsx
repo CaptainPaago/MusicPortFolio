@@ -14,8 +14,6 @@ export default function Navbar() {
   const { maxWidthDesktop, paddingXDesktop } = useAppDimensions();
   const router = useRouter();
 
-  console.log(router.pathname);
-
   const colors = Theme.palette;
 
   return (
@@ -73,11 +71,16 @@ export default function Navbar() {
           justifyContent="space-between"
           spacing={1}
         >
-          <Link href="https://www.instagram.com/ines.cruz.8/?hl=en">
-            <a target="_blank">
-              <Instagram color={colors.white.main} size={35} />
-            </a>
-          </Link>
+          {[
+            {
+              icon: <Instagram color={colors.white.main} size={35} />,
+              link: 'https://www.instagram.com/ines.cruz.8/?hl=en',
+            },
+          ].map(({ icon, link }, index) => (
+            <Link href={link} key={index}>
+              <a target="_blank">{icon}</a>
+            </Link>
+          ))}
         </Stack>
       </Box>
     </Box>

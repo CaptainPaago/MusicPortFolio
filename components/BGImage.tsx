@@ -10,8 +10,6 @@ export default function BGImage() {
   const router = useRouter();
   const { isMobile } = useAppDimensions();
 
-  console.log(router.pathname);
-
   const BGImage = isMobile ? indexBGMobile : indexBGDesktop;
 
   const IndexGradient = () => {

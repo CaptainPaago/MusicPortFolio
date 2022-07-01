@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <Stack direction="row" spacing="5px">
             {['my work', 'about', 'contact'].map((title, index) => (
               <Stack key={index} direction="row" spacing="5px">
-                <Link href={title.replace(' ', '-')}>
+                <Link href={`/${title.replace(' ', '-')}`}>
                   <a>
                     <Typography
                       color="white.main"

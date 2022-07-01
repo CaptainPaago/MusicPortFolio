@@ -39,10 +39,8 @@ export default function Navbar() {
         </Link>
       </Box>
       {open ? (
-        <Typography>close</Typography>
+        <Close size={40} color={colors.white.main} />
       ) : (
-        // <Close size={40} color={colors.primary.main} />
-        // <Typography>menu</Typography>
         <MenuHamburger size={40} color={colors.white.main} />
       )}
     </Stack>
@@ -62,7 +60,16 @@ export default function Navbar() {
         <Header />
       </Box>
 
-      <Drawer anchor="top" open={open} onClose={handleClose}>
+      <Drawer
+        anchor="top"
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          sx: {
+            backgroundColor: colors.black.main,
+          },
+        }}
+      >
         <Stack
           sx={{
             border: 'none',
