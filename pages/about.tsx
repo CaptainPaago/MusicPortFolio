@@ -1,6 +1,5 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import { Box, Stack, Typography } from '@mui/material';
 
 import Layout from '../components/Layout';
@@ -16,16 +15,37 @@ const About: NextPage = () => {
 
   return (
     <Layout pageTitle="About me" centered>
-      <Stack flex={1} justifyContent="center" direction="column" width="100%">
-        <Stack direction="column" maxWidth="450px" spacing="20px" zIndex={2}>
-          <Typography alignSelf="center" color="white.main" variant="h2">
-            about me
-          </Typography>
+      <Stack
+        flex={1}
+        id="about-container"
+        justifyContent="center"
+        height="100%"
+        direction="column"
+        maxWidth="450px"
+        spacing="20px"
+        width="100%"
+      >
+        <Typography
+          alignSelf="center"
+          color="white.main"
+          variant="h2"
+          zIndex={2}
+        >
+          about me
+        </Typography>
 
-          <Typography className="Roboto" color="white.main">
-            {lorem}
-          </Typography>
-        </Stack>
+        <Typography className="Roboto" color="white.main" zIndex={2}>
+          {lorem}
+        </Typography>
+
+        <Box
+          id="about-gradient-desktop"
+          height="100%"
+          maxWidth="900px"
+          width="60%"
+          position="fixed"
+          zIndex={1}
+        />
       </Stack>
     </Layout>
   );

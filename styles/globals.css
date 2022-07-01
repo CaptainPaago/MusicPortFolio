@@ -88,3 +88,7 @@ a {
     #000000 100%
   );
 }
+
+#about-gradient-desktop {
+  background: linear-gradient(90deg, #2d2d2d 57.29%, rgba(45, 45, 45, 0) 100%);
+}
