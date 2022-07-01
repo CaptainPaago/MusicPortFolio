@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   const colors = Theme.palette;
 
   return (
-    <Layout pageTitle="Odin" centered>
+    <Layout pageTitle="Inês Cruz" centered>
       <Stack flex={1} justifyContent="flex-end" direction="column">
         <Stack
           direction="column"

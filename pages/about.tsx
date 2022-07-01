@@ -6,15 +6,15 @@ import Layout from '../components/Layout';
 import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 
-const MyWork: NextPage = () => {
+const About: NextPage = () => {
   // const { isMobile } = useAppDimensions();
   // const colors = Theme.palette;
 
   return (
-    <Layout pageTitle="My work" centered>
+    <Layout pageTitle="About me" centered>
       <Typography>my work</Typography>
     </Layout>
   );
 };
 
-export default MyWork;
+export default About;

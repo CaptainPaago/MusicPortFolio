@@ -6,7 +6,12 @@ import Link from 'next/link';
 // import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
-import { Instagram } from '../Icons';
+import {
+  Instagram,
+  RouteIndicator as Indicator,
+  LinkedIn,
+  Facebook,
+} from '../Icons';
 // import { LogoLarge } from '../Logos';
 // import { Settings, MenuHamburger } from '../Icons';
 
@@ -52,16 +57,37 @@ export default function Navbar() {
             className="user-link"
             direction="row"
             justifyContent="space-between"
-            spacing={1}
+            spacing="10px"
             height="100%"
+            marginTop="4px"
           >
-            <Link href="/my-work">
-              <a>
-                <Typography variant="h4" color="white.main">
-                  my work
-                </Typography>
-              </a>
-            </Link>
+            {[
+              { title: 'my work', link: '/my-work' },
+              { title: 'about', link: '/about' },
+              { title: 'contact', link: '/contact' },
+            ].map(({ title, link }, index) => (
+              <Stack key={index} direction="row" spacing="10px">
+                <Stack direction="column" alignItems="center">
+                  <Link href={link}>
+                    <a>
+                      <Typography color="white.main" variant="h4">
+                        {title}
+                      </Typography>
+                    </a>
+                  </Link>
+
+                  {router.pathname === link && (
+                    <Indicator color={colors.primary.main} size={60} />
+                  )}
+                </Stack>
+
+                {index !== 2 && (
+                  <Typography color="white.main" variant="h4">
+                    |
+                  </Typography>
+                )}
+              </Stack>
+            ))}
           </Stack>
         )}
 
@@ -75,6 +101,14 @@ export default function Navbar() {
             {
               icon: <Instagram color={colors.white.main} size={35} />,
               link: 'https://www.instagram.com/ines.cruz.8/?hl=en',
+            },
+            {
+              icon: <LinkedIn color={colors.white.main} size={35} />,
+              link: 'https://www.linkedin.com/in/in%C3%AAs-cruz-03b9b1133/',
+            },
+            {
+              icon: <Facebook color={colors.white.main} size={35} />,
+              link: 'https://www.facebook.com/ines.cruz.77',
             },
           ].map(({ icon, link }, index) => (
             <Link href={link} key={index}>
