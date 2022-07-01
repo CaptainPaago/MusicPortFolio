@@ -29,6 +29,7 @@ export default function Navbar() {
       justifyContent="center"
       left={0}
       maxHeight="115px"
+      paddingTop="30px"
       maxWidth={maxWidthDesktop}
       paddingX={paddingXDesktop}
       paddingY="12px"

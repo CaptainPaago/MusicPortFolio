@@ -119,12 +119,7 @@ export default function Navbar() {
 
               <Box width="100%" height="1px" bgcolor="white.main" />
 
-              <Stack
-                className="user-link"
-                direction="row"
-                justifyContent="space-between"
-                spacing="5px"
-              >
+              <Stack className="user-link" direction="row" spacing="5px">
                 {[
                   {
                     icon: <Instagram color={colors.white.main} size={35} />,
@@ -139,11 +134,9 @@ export default function Navbar() {
                     link: 'https://www.facebook.com/ines.cruz.77',
                   },
                 ].map(({ icon, link }, index) => (
-                  <Button key={index}>
-                    <Link href={link}>
-                      <a target="_blank">{icon}</a>
-                    </Link>
-                  </Button>
+                  <Link href={link} key={index}>
+                    <a target="_blank">{icon}</a>
+                  </Link>
                 ))}
               </Stack>
             </Stack>
