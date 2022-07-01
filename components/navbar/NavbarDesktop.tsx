@@ -20,7 +20,6 @@ export default function Navbar() {
 
   return (
     <Box
-      // bgcolor="black.main"
       alignItems="center"
       className="navbar navbar-desktop"
       id="navbar-desktop-gradient"

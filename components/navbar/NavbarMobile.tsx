@@ -5,6 +5,7 @@ import Link from 'next/link';
 import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
+import { Close, MenuHamburger } from '../Icons';
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -31,8 +32,9 @@ export default function Navbar() {
       >
         <Link href="/">
           <a>
-            {/* <LogoSmall width={50} height={50} /> */}
-            <Typography>Inês Cruz</Typography>
+            <Typography color="white.main" variant="h3">
+              Inês Cruz
+            </Typography>
           </a>
         </Link>
       </Box>
@@ -40,8 +42,8 @@ export default function Navbar() {
         <Typography>close</Typography>
       ) : (
         // <Close size={40} color={colors.primary.main} />
-        <Typography>menu</Typography>
-        // <MenuHamburger size={40} color={colors.primary.main} />
+        // <Typography>menu</Typography>
+        <MenuHamburger size={40} color={colors.white.main} />
       )}
     </Stack>
   );
@@ -49,10 +51,11 @@ export default function Navbar() {
   return (
     <>
       <Box
+        id="navbar-mobile-gradient-closed"
         sx={{
           border: 'none',
           paddingX: paddingXMobile,
-          paddingY: '20px',
+          paddingTop: '10px',
           width: '100%',
         }}
       >
@@ -64,7 +67,7 @@ export default function Navbar() {
           sx={{
             border: 'none',
             paddingX: paddingXMobile,
-            paddingY: '20px',
+            paddingY: '10px',
             width: '100%',
           }}
           spacing="15px"

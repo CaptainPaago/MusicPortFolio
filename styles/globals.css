@@ -63,6 +63,14 @@ a {
   );
 }
 
+#navbar-mobile-gradient-closed {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.62) 4.69%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
 #index-gradient-desktop {
   background: linear-gradient(
     270deg,

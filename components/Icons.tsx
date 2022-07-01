@@ -40,3 +40,22 @@ export function Instagram({ size, color }: IconProps) {
     </svg>
   );
 }
+
+export function Close({ size, color }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15.2426 16L64.033 64.7904M15 64.7904L63.7904 16"
+        stroke={color}
+        strokeWidth="8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
