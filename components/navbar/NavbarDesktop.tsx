@@ -22,7 +22,7 @@ export default function Navbar() {
   const colors = Theme.palette;
 
   return (
-    <Box
+    <Stack
       alignItems="center"
       className="navbar navbar-desktop"
       id="navbar-desktop-gradient"
@@ -30,12 +30,10 @@ export default function Navbar() {
       left={0}
       maxHeight="115px"
       paddingTop="30px"
-      maxWidth={maxWidthDesktop}
-      paddingX={paddingXDesktop}
       paddingY="12px"
       position="absolute"
       top={0}
-      width="100%"
+      width="100vw"
       zIndex={100}
     >
       <Box
@@ -44,6 +42,9 @@ export default function Navbar() {
         flexDirection="row"
         justifyContent="space-between"
         margin="auto"
+        maxWidth={maxWidthDesktop}
+        paddingX={paddingXDesktop}
+        width="100%"
       >
         <Link href="/">
           <a>
@@ -118,6 +119,6 @@ export default function Navbar() {
           ))}
         </Stack>
       </Box>
-    </Box>
+    </Stack>
   );
 }
