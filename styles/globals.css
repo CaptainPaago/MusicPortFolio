@@ -59,11 +59,20 @@ a {
   );
 }
 
-#index-gradient {
+#index-gradient-desktop {
   background: linear-gradient(
     270deg,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.666667) 45.07%,
+    #000000 100%
+  );
+}
+
+#index-gradient-mobile {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.666667) 32.81%,
     #000000 100%
   );
 }

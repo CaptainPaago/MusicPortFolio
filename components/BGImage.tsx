@@ -14,18 +14,37 @@ export default function BGImage() {
 
   const BGImage = isMobile ? indexBGMobile : indexBGDesktop;
 
-  return (
-    <>
-      {router.pathname === '/' && (
+  const IndexGradient = () => {
+    const height = isMobile ? '50%' : '100%';
+    const width = isMobile ? '100%' : '50%';
+
+    if (isMobile)
+      return (
         <Box
-          position="fixed"
+          height={height}
+          id="index-gradient-mobile"
           left={0}
-          id="index-gradient"
-          width="50%"
-          height="100%"
+          bottom={0}
+          position="fixed"
+          width={width}
           zIndex={1}
         />
-      )}
+      );
+    return (
+      <Box
+        height={height}
+        id="index-gradient-desktop"
+        left={0}
+        position="fixed"
+        width={width}
+        zIndex={1}
+      />
+    );
+  };
+
+  return (
+    <>
+      {router.pathname === '/' && <IndexGradient />}
 
       <Box
         zIndex={0}
