@@ -18,7 +18,7 @@ const Home: NextPage = () => {
           direction="column"
           spacing="20px"
           width={isMobile ? '100%' : '475px'}
-          marginBottom="40px"
+          marginBottom={isMobile ? 0 : '40px'}
         >
           <Typography color="white.main" variant={isMobile ? 'h3' : 'h2'}>
             violin player
