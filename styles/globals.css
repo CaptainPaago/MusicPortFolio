@@ -58,3 +58,12 @@ a {
     rgba(0, 0, 0, 0.58) 100%
   );
 }
+
+#index-gradient {
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.666667) 45.07%,
+    #000000 100%
+  );
+}

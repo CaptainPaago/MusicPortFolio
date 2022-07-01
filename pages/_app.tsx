@@ -1,31 +1,36 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
+import { Stack } from '@mui/material';
 
+import BGImage from '../components/BGImage';
 import Footer from '../components/Footer';
 import NavbarDesktop from '../components/navbar/NavbarDesktop';
 import NavbarMobile from '../components/navbar/NavbarMobile';
 import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
-import bg from '../public/images/main-page-background.png';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isMobile } = useAppDimensions();
 
   return (
     <ThemeProvider theme={Theme}>
-      <div
-        style={{
-          backgroundImage: `url(${bg.src})`,
-          width: '100%',
+      <Stack
+        sx={{
+          alignItems: 'center',
           height: '100%',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          justifyContent: 'center',
+          position: 'fixed',
+          width: '100%',
+          zIndex: '2',
         }}
-      />
-      {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
-      <Component {...pageProps} />
-      <Footer />
+      >
+        {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
+        <Component {...pageProps} />
+        <Footer />
+      </Stack>
+
+      <BGImage />
     </ThemeProvider>
   );
 }
