@@ -8,8 +8,8 @@ import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 
 const Home: NextPage = () => {
-  // const { isMobile } = useAppDimensions();
-  // const colors = Theme.palette;
+  const { isMobile } = useAppDimensions();
+  const colors = Theme.palette;
 
   return (
     <Layout pageTitle="Odin" centered>
@@ -17,62 +17,42 @@ const Home: NextPage = () => {
         <Stack
           direction="column"
           spacing="20px"
-          width="475px"
+          width={isMobile ? '100%' : '475px'}
           marginBottom="40px"
         >
-          <Typography color="white.main" variant="h2">
+          <Typography color="white.main" variant={isMobile ? 'h3' : 'h2'}>
             violin player
           </Typography>
 
           <Stack direction="row" spacing="5px">
-            <Link href="/my-work">
-              <a>
-                <Typography
-                  color="white.main"
-                  variant="h4"
-                  sx={{ textDecoration: 'underline' }}
-                >
-                  my work
-                </Typography>
-              </a>
-            </Link>
-            <Typography color="white.main" variant="h4">
-              |
-            </Typography>
-            <Link href="/my-work">
-              <a>
-                <Typography
-                  color="white.main"
-                  variant="h4"
-                  sx={{ textDecoration: 'underline' }}
-                >
-                  bio
-                </Typography>
-              </a>
-            </Link>
-            <Typography color="white.main" variant="h4">
-              |
-            </Typography>
-            <Link href="/my-work">
-              <a>
-                <Typography
-                  color="white.main"
-                  variant="h4"
-                  sx={{ textDecoration: 'underline' }}
-                >
-                  contact me
-                </Typography>
-              </a>
-            </Link>
+            {['my work', 'about', 'contact'].map((title, index) => (
+              <Stack key={index} direction="row" spacing="5px">
+                <Link href={title.replace(' ', '-')}>
+                  <a>
+                    <Typography
+                      color="white.main"
+                      variant={isMobile ? 'h5' : 'h4'}
+                      sx={{ textDecoration: 'underline' }}
+                    >
+                      {title}
+                    </Typography>
+                  </a>
+                </Link>
+                {index !== 2 && (
+                  <Typography
+                    color="white.main"
+                    variant={isMobile ? 'h5' : 'h4'}
+                  >
+                    |
+                  </Typography>
+                )}
+              </Stack>
+            ))}
           </Stack>
 
           <Box bgcolor="white.main" width="100%" height="1px" />
 
-          <Typography
-            color="white.main"
-            variant="body1"
-            fontFamily="Roboto, sans-serif"
-          >
+          <Typography color="white.main" variant="body1" className="Roboto">
             A amet nec sodales nibh enim. Vulputate enim magna amet sed porta
             tortor egestas neque volutpat.
           </Typography>
@@ -81,11 +61,17 @@ const Home: NextPage = () => {
             color="primary"
             variant="contained"
             sx={{
-              fontFamily: 'Roboto, sans-serif',
-              fontSize: '1.2rem',
+              width: isMobile ? '60%' : '100%',
+              alignSelf: 'center',
             }}
           >
-            view my cv
+            <Typography
+              variant={isMobile ? 'h6' : 'h5'}
+              className="Roboto"
+              marginY={isMobile ? 0 : '5px'}
+            >
+              view my cv
+            </Typography>
           </Button>
         </Stack>
       </Stack>

@@ -51,7 +51,7 @@ export default function BGImage() {
         style={{
           width: '100%',
           height: '100%',
-          filter: 'blur(0.8px)',
+          filter: isMobile ? 'blur(0.7px)' : 'blur(1px)',
         }}
       >
         <Image

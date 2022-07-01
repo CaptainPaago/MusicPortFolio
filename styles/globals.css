@@ -51,6 +51,10 @@ a {
   background-color: white !important;
 }
 
+.Roboto {
+  font-family: Roboto, sans-serif;
+}
+
 #navbar-desktop-gradient {
   background: linear-gradient(
     0deg,
