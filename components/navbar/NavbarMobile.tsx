@@ -1,16 +1,24 @@
 import React from 'react';
-import { Box, Drawer, Stack, Typography } from '@mui/material';
+import { Box, Button, Drawer, Stack, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 import Link from 'next/link';
-import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
 import useAppDimensions from '../../hooks/useAppDimensions';
-import { Close, MenuHamburger } from '../Icons';
+import {
+  Close,
+  Facebook,
+  Instagram,
+  LinkedIn,
+  MenuHamburger,
+  RouteIndicator as Indicator,
+} from '../Icons';
 
 export default function Navbar() {
-  const [open, setOpen] = React.useState(false);
-
+  const router = useRouter();
   const { paddingXMobile } = useAppDimensions();
+
+  const [open, setOpen] = React.useState(false);
 
   const colors = Theme.palette;
 
@@ -80,8 +88,65 @@ export default function Navbar() {
           spacing="15px"
         >
           <Header />
+
+          <Box width="100%" height="1px" bgcolor="white.main" />
+
           <Box onClick={handleClose}>
-            <NavbarMenu />
+            <Stack direction="column" alignItems="flex-start" spacing="10px">
+              <Stack direction="column" alignItems="flex-start">
+                {[
+                  { title: 'my work', link: '/my-work' },
+                  { title: 'about', link: '/about' },
+                  { title: 'contact', link: '/contact' },
+                ].map(({ title, link }, index) => (
+                  <Stack direction="column" alignItems="center" key={index}>
+                    <Button>
+                      <Link href={link}>
+                        <a>
+                          <Typography color="white.main" variant="h4">
+                            {title}
+                          </Typography>
+                        </a>
+                      </Link>
+                    </Button>
+
+                    {router.pathname === link && (
+                      <Indicator color={colors.primary.main} size={60} />
+                    )}
+                  </Stack>
+                ))}
+              </Stack>
+
+              <Box width="100%" height="1px" bgcolor="white.main" />
+
+              <Stack
+                className="user-link"
+                direction="row"
+                justifyContent="space-between"
+                spacing="5px"
+              >
+                {[
+                  {
+                    icon: <Instagram color={colors.white.main} size={35} />,
+                    link: 'https://www.instagram.com/ines.cruz.8/?hl=en',
+                  },
+                  {
+                    icon: <LinkedIn color={colors.white.main} size={35} />,
+                    link: 'https://www.linkedin.com/in/in%C3%AAs-cruz-03b9b1133/',
+                  },
+                  {
+                    icon: <Facebook color={colors.white.main} size={35} />,
+                    link: 'https://www.facebook.com/ines.cruz.77',
+                  },
+                ].map(({ icon, link }, index) => (
+                  <Button key={index}>
+                    <Link href={link}>
+                      <a target="_blank">{icon}</a>
+                    </Link>
+                  </Button>
+                ))}
+              </Stack>
+            </Stack>
           </Box>
         </Stack>
       </Drawer>
