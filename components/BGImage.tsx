@@ -13,8 +13,6 @@ export default function BGImage() {
 
   const landingBG = isMobile ? indexBGMobile : indexBGDesktop;
 
-  const aboutBG = isMobile ? aboutDesktop : aboutDesktop;
-
   const IndexGradient = () => {
     const height = isMobile ? '50%' : '100%';
     const width = isMobile ? '100%' : '50%';
@@ -52,7 +50,7 @@ export default function BGImage() {
             style={{
               width: '100%',
               height: '100%',
-              filter: isMobile ? 'blur(0.7px)' : 'blur(1px)',
+              filter: isMobile ? 'blur(0.7px)' : 'blur(1.3px)',
             }}
           >
             <Image
@@ -64,35 +62,37 @@ export default function BGImage() {
             />
           </Box>
         );
+
       case '/about':
-        return (
-          <Stack
-            height="100%"
-            width="100%"
-            id="about-me-bg"
-            justifyContent="center"
-          >
-            <Box
-              zIndex={0}
-              maxHeight="900px"
-              style={{
-                filter: isMobile ? 'blur(0.7px)' : 'blur(1px)',
-                height: '100%',
-                position: 'fixed',
-                right: 0,
-                width: '70%',
-              }}
+        if (!isMobile)
+          return (
+            <Stack
+              height="100%"
+              width="100%"
+              id="about-me-bg"
+              justifyContent="center"
             >
-              <Image
-                src={aboutBG.src}
-                alt="main-page-background"
-                layout="fill"
-                objectFit="contain"
-                loading="lazy"
-              />
-            </Box>
-          </Stack>
-        );
+              <Box
+                zIndex={0}
+                maxHeight="900px"
+                style={{
+                  filter: 'blur(1px)',
+                  height: '100%',
+                  position: 'fixed',
+                  right: 0,
+                  width: '70%',
+                }}
+              >
+                <Image
+                  src={aboutDesktop.src}
+                  alt="about-page-background"
+                  layout="fill"
+                  objectFit="contain"
+                  loading="lazy"
+                />
+              </Box>
+            </Stack>
+          );
       default:
         return null;
     }

@@ -29,7 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         setBgColor(black[800]);
         break;
     }
-  }, [router]);
+  }, [router, black]);
+
   return (
     <>
       <style jsx global>

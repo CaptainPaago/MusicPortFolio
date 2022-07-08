@@ -10,7 +10,7 @@ const Footer = () => {
   //   const fontSize = isMobile ? 'caption' : 'body1';
 
   return (
-    <Stack alignItems="center" direction="column" paddingY="15px">
+    <Stack alignItems="center" direction="column" paddingY="15px" zIndex={5}>
       <Stack
         className="user-link"
         direction="row"

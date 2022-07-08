@@ -1,17 +1,74 @@
 import React from 'react';
+import Image from 'next/image';
 import type { NextPage } from 'next';
 import { Box, Stack, Typography } from '@mui/material';
 
+import aboutMobile from '../public/images/about-me-photo-mobile.png';
 import Layout from '../components/Layout';
-import Theme from '../app/Theme';
+import { body as about } from '../localization/locales/pt-PT/about.json';
+// import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 
 const About: NextPage = () => {
   const { isMobile } = useAppDimensions();
-  const colors = Theme.palette;
+  // const colors = Theme.palette;
 
-  const lorem =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl nunc egestas nisi, euismod aliquam nisl nunc eget consectetur sagittis. Donec euismod, nisl eget consectetur sagittis, nisl nunc egestas nisi, euismod aliquam nisl nunc eget consectetur sagittis. Donec euismod, nisl eget consectetur sagittis, nisl nunc egestas nisi,';
+  if (isMobile) {
+    return (
+      <Layout pageTitle="About me" centered>
+        <Stack
+          flex={1}
+          id="about-container"
+          justifyContent="flex-start"
+          height="100%"
+          direction="column"
+          spacing="10px"
+          width="100%"
+          display="block"
+        >
+          <Box
+            zIndex={0}
+            style={{
+              filter: 'blur(0.4px)',
+              height: '297px',
+              width: '100vw',
+            }}
+            marginX="-15px"
+          >
+            <Image
+              src={aboutMobile.src}
+              alt="about-page-background"
+              layout="fill"
+              objectFit="contain"
+              loading="lazy"
+            />
+          </Box>
+
+          <Stack alignItems="center" id="about-me-title-mobile" width="100%">
+            <Typography
+              alignSelf="center"
+              color="white.main"
+              variant="h2"
+              zIndex={2}
+            >
+              about me
+            </Typography>
+          </Stack>
+
+          {about.map((paragraph, index) => (
+            <Typography
+              key={index}
+              className="Roboto"
+              color="white.main"
+              zIndex={2}
+            >
+              {paragraph}
+            </Typography>
+          ))}
+        </Stack>
+      </Layout>
+    );
+  }
 
   return (
     <Layout pageTitle="About me" centered>
@@ -21,7 +78,7 @@ const About: NextPage = () => {
         justifyContent="center"
         height="100%"
         direction="column"
-        maxWidth="450px"
+        maxWidth="500px"
         spacing="20px"
         width="100%"
       >
@@ -34,16 +91,24 @@ const About: NextPage = () => {
           about me
         </Typography>
 
-        <Typography className="Roboto" color="white.main" zIndex={2}>
-          {lorem}
-        </Typography>
+        {about.map((paragraph, index) => (
+          <Typography
+            key={index}
+            className="Roboto"
+            color="white.main"
+            zIndex={2}
+          >
+            {paragraph}
+          </Typography>
+        ))}
 
         <Box
-          id="about-gradient-desktop"
           height="100%"
+          id="about-gradient-desktop"
           maxWidth="900px"
-          width="60%"
+          minWidth="300px"
           position="fixed"
+          width="60%"
           zIndex={1}
         />
       </Stack>
