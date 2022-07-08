@@ -93,6 +93,15 @@ a {
   background: linear-gradient(90deg, #2d2d2d 57.29%, rgba(45, 45, 45, 0) 100%);
 }
 
+#contact-gradient-desktop {
+  background: linear-gradient(90deg, #2d2d2d 57.29%, rgba(45, 45, 45, 0) 100%);
+  transform: rotate(-180deg);
+}
+
 #about-me-title-mobile {
   margin-top: -60px;
+}
+
+#contact-me-title-mobile {
+  margin-top: -80px;
 }
