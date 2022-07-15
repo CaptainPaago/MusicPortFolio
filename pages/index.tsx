@@ -4,12 +4,18 @@ import Link from 'next/link';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
 import Layout from '../components/Layout';
-import Theme from '../app/Theme';
+import {
+  title,
+  links,
+  blurb,
+  cvButton,
+} from '../localization/locales/en-US/landing.json';
+// import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 
 const Home: NextPage = () => {
   const { isMobile } = useAppDimensions();
-  const colors = Theme.palette;
+  // const colors = Theme.palette;
 
   return (
     <Layout pageTitle="Inês Cruz" centered>
@@ -21,11 +27,11 @@ const Home: NextPage = () => {
           marginBottom={isMobile ? 0 : '40px'}
         >
           <Typography color="white.main" variant={isMobile ? 'h3' : 'h2'}>
-            violin player
+            {title}
           </Typography>
 
           <Stack direction="row" spacing="5px">
-            {['my work', 'about', 'contact'].map((title, index) => (
+            {links.map((title, index) => (
               <Stack key={index} direction="row" spacing="5px">
                 <Link href={`/${title.replace(' ', '-')}`}>
                   <a>
@@ -53,8 +59,7 @@ const Home: NextPage = () => {
           <Box bgcolor="white.main" width="100%" height="1px" />
 
           <Typography color="white.main" variant="body1" className="Roboto">
-            A amet nec sodales nibh enim. Vulputate enim magna amet sed porta
-            tortor egestas neque volutpat.
+            {blurb}
           </Typography>
 
           <Button
@@ -70,7 +75,7 @@ const Home: NextPage = () => {
               className="Roboto"
               marginY={isMobile ? 0 : '5px'}
             >
-              view my cv
+              {cvButton}
             </Typography>
           </Button>
         </Stack>

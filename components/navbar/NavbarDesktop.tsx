@@ -31,7 +31,6 @@ export default function Navbar() {
       maxHeight="115px"
       paddingTop="30px"
       paddingY="12px"
-      position="absolute"
       top={0}
       width="100vw"
       zIndex={100}
