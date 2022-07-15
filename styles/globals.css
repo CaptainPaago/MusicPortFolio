@@ -23,6 +23,10 @@ body {
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  background-color: transparent;
+}
+
 a {
   color: inherit;
   text-decoration: none;
