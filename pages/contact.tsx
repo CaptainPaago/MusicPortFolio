@@ -1,20 +1,74 @@
 import React from 'react';
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { Box, Stack, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  IconButton,
+  Snackbar,
+  SnackbarOrigin,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import ContactCard from '../components/ContactCard';
 import contactDesktop from '../public/images/contact-background-desktop.png';
 import Layout from '../components/Layout';
 import useAppDimensions from '../hooks/useAppDimensions';
 import aboutMobile from '../public/images/contact-background-mobile.png';
+import { Close } from '../components/Icons';
 
 const Contact: NextPage = () => {
   const { isMobile } = useAppDimensions();
 
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const alertAnchor: SnackbarOrigin = {
+    vertical: isMobile ? 'bottom' : 'top',
+    horizontal: 'center',
+  };
+
   if (isMobile) {
     return (
       <Layout pageTitle="Contact me" centered>
+        <Snackbar
+          anchorOrigin={alertAnchor}
+          autoHideDuration={3000}
+          open={open}
+          onClose={handleClose}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <Close size={20} color="white" />
+            </IconButton>
+          }
+        >
+          <Alert
+            onClose={handleClose}
+            severity={errorMessage ? 'error' : 'success'}
+            sx={{ width: '100%' }}
+          >
+            {message}
+          </Alert>
+        </Snackbar>
+
         <Stack
           flex={1}
           id="about-container"
@@ -54,7 +108,11 @@ const Contact: NextPage = () => {
             </Typography>
           </Stack>
 
-          <ContactCard />
+          <ContactCard
+            setMessage={setMessage}
+            setOpen={setOpen}
+            setErrorMessage={setErrorMessage}
+          />
         </Stack>
       </Layout>
     );
@@ -62,6 +120,31 @@ const Contact: NextPage = () => {
 
   return (
     <Layout pageTitle="Contact me" centered>
+      <Snackbar
+        anchorOrigin={alertAnchor}
+        autoHideDuration={3000}
+        open={open}
+        onClose={handleClose}
+        action={
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <Close size={20} color="white" />
+          </IconButton>
+        }
+      >
+        <Alert
+          onClose={handleClose}
+          severity={errorMessage ? 'error' : 'success'}
+          sx={{ width: '100%' }}
+        >
+          {message}
+        </Alert>
+      </Snackbar>
+
       <Stack
         height="100%"
         id="contact-me-bg"
@@ -110,7 +193,11 @@ const Contact: NextPage = () => {
           >
             contact me
           </Typography>
-          <ContactCard />
+          <ContactCard
+            setMessage={setMessage}
+            setOpen={setOpen}
+            setErrorMessage={setErrorMessage}
+          />
           <Box
             height="100%"
             id="contact-gradient-desktop"

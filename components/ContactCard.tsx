@@ -8,7 +8,17 @@ import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 import { Email, Phone } from './Icons';
 
-export default function ContactCard() {
+interface Props {
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function ContactCard({
+  setMessage,
+  setErrorMessage,
+  setOpen,
+}: Props) {
   const { isMobile } = useAppDimensions();
 
   const validationSchema = yup.object({
@@ -85,12 +95,20 @@ export default function ContactCard() {
                 values,
                 process.env.USER_ID ?? ''
               ).then((response) => {
+                actions.setSubmitting(false);
                 console.log('SUCCESS!', response.status, response.text);
+                setErrorMessage(false);
+                setMessage('message sent successfully');
+                setOpen(true);
+                actions.resetForm();
               });
             } catch (e) {
               //   handleError(e, values.email);
               console.log('Error!', e);
               actions.setSubmitting(false);
+              setErrorMessage(true);
+              setMessage('something went wrong...');
+              setOpen(true);
             }
           }}
         >
@@ -182,8 +200,11 @@ export default function ContactCard() {
                   width: isMobile ? '100%' : '100%',
                   alignSelf: 'center',
                 }}
-                onClick={props.submitForm}
-                disabled={!props.isValid}
+                onClick={() => {
+                  props.setSubmitting(true);
+                  props.submitForm();
+                }}
+                disabled={!props.isValid || props.isSubmitting}
               >
                 <Typography
                   variant={isMobile ? 'h6' : 'h5'}
