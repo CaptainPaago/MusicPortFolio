@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import { send } from 'emailjs-com';
+import { Formik, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
 import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
@@ -9,36 +11,14 @@ import { Email, Phone } from './Icons';
 export default function ContactCard() {
   const { isMobile } = useAppDimensions();
 
-  const [toSend, setToSend] = React.useState({
-    from_name: '',
-    to_name: 'Inês Cruz',
-    message: '',
-    reply_to: '',
+  const validationSchema = yup.object({
+    reply_to: yup
+      .string()
+      .email('enter a valid email')
+      .required('email is required'),
+    message: yup.string().required('please type a message'),
+    from_name: yup.string().required('please add your name'),
   });
-
-  console.log(process.env.SERVICE_ID);
-  console.log(process.env.TEMPLATE_ID);
-  console.log(process.env.USER_ID);
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    send(
-      process.env.SERVICE_ID ?? '',
-      process.env.TEMPLATE_ID ?? '',
-      toSend,
-      process.env.USER_ID ?? ''
-    )
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      })
-      .catch((err) => {
-        console.log('FAILED...', err);
-      });
-  };
-
-  const handleChange = (e: any) => {
-    setToSend({ ...toSend, [e.target.name]: e.target.value });
-  };
 
   const colors = Theme.palette;
 
@@ -51,11 +31,6 @@ export default function ContactCard() {
       fontFamily: 'Roboto',
     },
   };
-
-  const canSubmit =
-    toSend.from_name !== '' && toSend.message !== '' && toSend.reply_to !== ''
-      ? true
-      : false;
 
   return (
     <Stack direction="column" spacing={isMobile ? '10px' : '20px'}>
@@ -93,73 +68,134 @@ export default function ContactCard() {
         <Typography color="white.200" variant={isMobile ? 'h5' : 'h4'}>
           contact form
         </Typography>
-        <form onSubmit={handleSubmit}>
-          <Stack
-            direction="column"
-            spacing={isMobile ? '10px' : '20px'}
-            zIndex={5}
-          >
-            <TextField
-              placeholder="your name"
-              variant="outlined"
-              InputProps={inputProps}
-              sx={{
-                width: '100%',
-              }}
-              type="text"
-              name="from_name"
-              value={toSend.from_name}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              variant="outlined"
-              InputProps={inputProps}
-              sx={{
-                width: '100%',
-              }}
-              type="text"
-              name="reply_to"
-              placeholder="your email"
-              value={toSend.reply_to}
-              onChange={handleChange}
-              required
-            />
 
-            <TextField
-              placeholder="message"
-              variant="outlined"
-              multiline
-              rows={4}
-              InputProps={inputProps}
-              type="text"
-              name="message"
-              value={toSend.message}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-
-            <Button
-              color="primary"
-              variant="contained"
-              sx={{
-                width: isMobile ? '100%' : '100%',
-                alignSelf: 'center',
-              }}
-              onClick={handleSubmit}
-              disabled={!canSubmit}
+        <Formik
+          initialValues={{
+            from_name: '',
+            to_name: 'Inês Cruz',
+            message: '',
+            reply_to: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={async (values, actions) => {
+            try {
+              await send(
+                process.env.SERVICE_ID ?? '',
+                process.env.TEMPLATE_ID ?? '',
+                values,
+                process.env.USER_ID ?? ''
+              ).then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+              });
+            } catch (e) {
+              //   handleError(e, values.email);
+              console.log('Error!', e);
+              actions.setSubmitting(false);
+            }
+          }}
+        >
+          {(props) => (
+            <Stack
+              direction="column"
+              spacing={isMobile ? '10px' : '20px'}
+              zIndex={5}
             >
-              <Typography
-                variant={isMobile ? 'h6' : 'h5'}
-                className="Roboto"
-                marginY={isMobile ? 0 : '5px'}
+              <Stack width="100%">
+                <TextField
+                  placeholder="your name"
+                  variant="outlined"
+                  InputProps={inputProps}
+                  type="text"
+                  name="from_name"
+                  value={props.values.from_name}
+                  onChange={props.handleChange}
+                  fullWidth
+                  required
+                  onBlur={() => {
+                    props.setFieldTouched('from_name');
+                  }}
+                />
+                <ErrorMessage name="from_name">
+                  {(msg) => (
+                    <Typography color="error.main" variant="subtitle2">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Stack>
+
+              <Stack width="100%">
+                <TextField
+                  variant="outlined"
+                  InputProps={inputProps}
+                  type="text"
+                  name="reply_to"
+                  placeholder="your email"
+                  value={props.values.reply_to}
+                  onChange={props.handleChange}
+                  fullWidth
+                  required
+                  onBlur={() => {
+                    props.setFieldTouched('reply_to');
+                  }}
+                />
+                <ErrorMessage
+                  name="reply_to"
+                  render={(msg) => (
+                    <Typography color="error.main" variant="subtitle2">
+                      {msg}
+                    </Typography>
+                  )}
+                />
+              </Stack>
+
+              <Stack width="100%">
+                <TextField
+                  placeholder="message"
+                  variant="outlined"
+                  multiline
+                  rows={4}
+                  InputProps={inputProps}
+                  type="text"
+                  name="message"
+                  value={props.values.message}
+                  onChange={props.handleChange}
+                  fullWidth
+                  required
+                  onBlur={() => {
+                    props.setFieldTouched('message');
+                  }}
+                />
+                <ErrorMessage name="message">
+                  {(msg) => (
+                    <Typography color="error.main" variant="subtitle2">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Stack>
+
+              <Button
+                color="primary"
+                variant="contained"
+                sx={{
+                  width: isMobile ? '100%' : '100%',
+                  alignSelf: 'center',
+                }}
+                onClick={props.submitForm}
+                disabled={!props.isValid}
               >
-                send email
-              </Typography>
-            </Button>
-          </Stack>
-        </form>
+                <Typography
+                  variant={isMobile ? 'h6' : 'h5'}
+                  className="Roboto"
+                  marginY={isMobile ? 0 : '5px'}
+                >
+                  send email
+                </Typography>
+              </Button>
+            </Stack>
+          )}
+        </Formik>
       </Stack>
     </Stack>
   );
