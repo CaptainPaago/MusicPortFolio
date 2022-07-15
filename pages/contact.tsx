@@ -1,118 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
+import ContactCard from '../components/ContactCard';
 import contactDesktop from '../public/images/contact-background-desktop.png';
 import Layout from '../components/Layout';
-import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 import aboutMobile from '../public/images/contact-background-mobile.png';
-import { Email, Phone } from '../components/Icons';
 
 const Contact: NextPage = () => {
   const { isMobile } = useAppDimensions();
-  const colors = Theme.palette;
-
-  const ContactCard = () => {
-    const inputProps = {
-      sx: {
-        // @ts-ignore: Unreachable code error
-        bgcolor: colors.black[600],
-        // @ts-ignore: Unreachable code error
-        color: colors.white[200],
-        fontFamily: 'Roboto',
-      },
-    };
-
-    return (
-      <Stack direction="column" spacing={isMobile ? '10px' : '20px'}>
-        <Stack
-          bgcolor="black.700"
-          borderRadius="5px"
-          direction="column"
-          padding={isMobile ? '15px' : '20px'}
-          spacing={isMobile ? '10px' : '20px'}
-          zIndex={5}
-        >
-          <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
-            <Email color={colors.white.main} size={isMobile ? 25 : 35} />
-            <Typography color="white.main" variant={isMobile ? 'h5' : 'h4'}>
-              violino.ines95@gmail.com
-            </Typography>
-          </Stack>
-
-          <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
-            <Phone color={colors.white.main} size={isMobile ? 25 : 35} />
-            <Typography color="white.main" variant={isMobile ? 'h5' : 'h4'}>
-              +46 71 234 56 84
-            </Typography>
-          </Stack>
-        </Stack>
-
-        <Stack
-          bgcolor="black.700"
-          borderRadius="5px"
-          direction="column"
-          padding={isMobile ? '15px' : '20px'}
-          spacing={isMobile ? '10px' : '20px'}
-          zIndex={5}
-        >
-          <Typography color="white.200" variant={isMobile ? 'h5' : 'h4'}>
-            contact form
-          </Typography>
-
-          <TextField
-            placeholder="subject"
-            variant="outlined"
-            InputProps={inputProps}
-          />
-
-          <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
-            <TextField
-              placeholder="name"
-              variant="outlined"
-              InputProps={inputProps}
-              sx={{
-                width: '100%',
-              }}
-            />
-            <TextField
-              placeholder="email"
-              variant="outlined"
-              InputProps={inputProps}
-              sx={{
-                width: '100%',
-              }}
-            />
-          </Stack>
-
-          <TextField
-            placeholder="message"
-            variant="outlined"
-            multiline
-            rows={4}
-            InputProps={inputProps}
-          />
-
-          <Button variant="contained" color="primary">
-            <Typography
-              variant={isMobile ? 'h5' : 'h4'}
-              color="black.700"
-              className="Roboto"
-              // fontWeight="bold"
-            >
-              send email
-            </Typography>
-          </Button>
-        </Stack>
-      </Stack>
-    );
-  };
 
   if (isMobile) {
     return (
-      <Layout pageTitle="About me" centered>
+      <Layout pageTitle="Contact me" centered>
         <Stack
           flex={1}
           id="about-container"
@@ -159,7 +61,7 @@ const Contact: NextPage = () => {
   }
 
   return (
-    <Layout pageTitle="About me" centered>
+    <Layout pageTitle="Contact me" centered>
       <Stack
         height="100%"
         id="contact-me-bg"
