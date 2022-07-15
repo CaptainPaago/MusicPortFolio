@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { NextPage } from 'next';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 
+import contactDesktop from '../public/images/contact-background-desktop.png';
 import Layout from '../components/Layout';
 import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
@@ -159,6 +160,35 @@ const Contact: NextPage = () => {
 
   return (
     <Layout pageTitle="About me" centered>
+      <Stack
+        height="100%"
+        id="contact-me-bg"
+        justifyContent="center"
+        position="fixed"
+        top="1"
+        width="100%"
+      >
+        <Box
+          zIndex={0}
+          maxHeight="900px"
+          style={{
+            filter: 'blur(1.8px)',
+            height: '100%',
+            position: 'fixed',
+            left: 0,
+            width: '70%',
+          }}
+        >
+          <Image
+            src={contactDesktop.src}
+            alt="about-page-background"
+            layout="fill"
+            objectFit="contain"
+            loading="lazy"
+          />
+        </Box>
+      </Stack>
+
       <Stack alignItems="flex-end" height="100%" width="100%">
         <Stack
           flex={1}

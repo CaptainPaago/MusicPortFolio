@@ -46,17 +46,37 @@ function MyApp({ Component, pageProps }: AppProps) {
             alignItems: 'center',
             height: '100%',
             justifyContent: 'center',
-            position: 'fixed',
+            // position: 'fixed',
             width: '100%',
             zIndex: '2',
           }}
         >
-          {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
+          <Stack
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'sticky',
+              width: '100%',
+              top: 0,
+              zIndex: '1000',
+            }}
+          >
+            {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
+          </Stack>
           <Component {...pageProps} />
           <Footer />
         </Stack>
 
-        <BGImage />
+        <Stack
+          sx={{
+            alignItems: 'center',
+            height: '100%',
+            position: 'absolute',
+            width: '100%',
+          }}
+        >
+          <BGImage />
+        </Stack>
       </ThemeProvider>
     </>
   );

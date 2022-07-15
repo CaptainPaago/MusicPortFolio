@@ -24,6 +24,11 @@ export default function Navbar() {
 
   const handleClose = () => setOpen(false);
 
+  const navbarId =
+    router.pathname === '/'
+      ? 'navbar-mobile-gradient-closed'
+      : 'navbar-mobile-gradient-solid';
+
   const Header = () => (
     <Stack
       justifyContent="space-between"
@@ -57,7 +62,7 @@ export default function Navbar() {
   return (
     <>
       <Box
-        id="navbar-mobile-gradient-closed"
+        id={navbarId}
         sx={{
           border: 'none',
           paddingX: paddingXMobile,

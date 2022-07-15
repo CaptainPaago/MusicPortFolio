@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import { body as about } from '../localization/locales/pt-PT/about.json';
 // import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
+import aboutDesktop from '../public/images/about-me-photo-desktop.png';
 
 const About: NextPage = () => {
   const { isMobile } = useAppDimensions();
@@ -72,6 +73,35 @@ const About: NextPage = () => {
 
   return (
     <Layout pageTitle="About me" centered>
+      <Stack
+        height="100%"
+        id="about-me-bg"
+        justifyContent="center"
+        position="fixed"
+        top="1"
+        width="100%"
+      >
+        <Box
+          zIndex={0}
+          maxHeight="900px"
+          style={{
+            filter: 'blur(1px)',
+            height: '100%',
+            position: 'fixed',
+            right: 0,
+            width: '70%',
+          }}
+        >
+          <Image
+            src={aboutDesktop.src}
+            alt="about-page-background"
+            layout="fill"
+            objectFit="contain"
+            loading="lazy"
+          />
+        </Box>
+      </Stack>
+
       <Stack
         flex={1}
         id="about-container"

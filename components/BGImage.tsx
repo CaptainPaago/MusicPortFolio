@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import useAppDimensions from '../hooks/useAppDimensions';
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 
 import indexBGDesktop from '../public/images/main-page-background.png';
 import indexBGMobile from '../public/images/main-page-background-mobile.png';
-import aboutDesktop from '../public/images/about-me-photo-desktop.png';
-import contactDesktop from '../public/images/contact-background-desktop.png';
+// import aboutDesktop from '../public/images/about-me-photo-desktop.png';
+// import contactDesktop from '../public/images/contact-background-desktop.png';
 
 export default function BGImage() {
   const router = useRouter();
@@ -64,67 +64,67 @@ export default function BGImage() {
           </Box>
         );
 
-      case '/about':
-        if (!isMobile)
-          return (
-            <Stack
-              height="100%"
-              width="100%"
-              id="about-me-bg"
-              justifyContent="center"
-            >
-              <Box
-                zIndex={0}
-                maxHeight="900px"
-                style={{
-                  filter: 'blur(1px)',
-                  height: '100%',
-                  position: 'fixed',
-                  right: 0,
-                  width: '70%',
-                }}
-              >
-                <Image
-                  src={aboutDesktop.src}
-                  alt="about-page-background"
-                  layout="fill"
-                  objectFit="contain"
-                  loading="lazy"
-                />
-              </Box>
-            </Stack>
-          );
+      // case '/about':
+      //   if (!isMobile)
+      //     return (
+      //       <Stack
+      //         height="100%"
+      //         id="about-me-bg"
+      //         justifyContent="center"
+      //         width="100%"
+      //       >
+      //         <Box
+      //           zIndex={0}
+      //           maxHeight="900px"
+      //           style={{
+      //             filter: 'blur(1px)',
+      //             height: '100%',
+      //             position: 'fixed',
+      //             right: 0,
+      //             width: '70%',
+      //           }}
+      //         >
+      //           <Image
+      //             src={aboutDesktop.src}
+      //             alt="about-page-background"
+      //             layout="fill"
+      //             objectFit="contain"
+      //             loading="lazy"
+      //           />
+      //         </Box>
+      //       </Stack>
+      //     );
 
-      case '/contact':
-        if (!isMobile)
-          return (
-            <Stack
-              height="100%"
-              width="100%"
-              id="about-me-bg"
-              justifyContent="center"
-            >
-              <Box
-                zIndex={0}
-                maxHeight="900px"
-                style={{
-                  filter: 'blur(1px)',
-                  height: '100%',
-                  position: 'fixed',
-                  left: 0,
-                  width: '70%',
-                }}
-              >
-                <Image
-                  src={contactDesktop.src}
-                  alt="about-page-background"
-                  layout="fill"
-                  objectFit="contain"
-                  loading="lazy"
-                />
-              </Box>
-            </Stack>
-          );
+      // case '/contact':
+      //   if (!isMobile)
+      //     return (
+      //       <Stack
+      //         height="100%"
+      //         width="100%"
+      //         id="about-me-bg"
+      //         justifyContent="center"
+      //       >
+      //         <Box
+      //           zIndex={0}
+      //           // maxHeight="900px"
+      //           style={{
+      //             filter: 'blur(1.8px)',
+      //             height: '100%',
+      //             position: 'fixed',
+      //             left: 0,
+      //             width: '70%',
+      //           }}
+      //         >
+      //           <Image
+      //             src={contactDesktop.src}
+      //             alt="about-page-background"
+      //             layout="fill"
+      //             objectFit="contain"
+      //             loading="lazy"
+      //           />
+      //         </Box>
+      //       </Stack>
+      //     );
       default:
         return null;
     }

@@ -21,11 +21,16 @@ export default function Navbar() {
 
   const colors = Theme.palette;
 
+  const navbarId =
+    router.pathname === '/'
+      ? 'navbar-desktop-gradient'
+      : 'navbar-desktop-solid';
+
   return (
     <Stack
       alignItems="center"
       className="navbar navbar-desktop"
-      id="navbar-desktop-gradient"
+      id={navbarId}
       justifyContent="center"
       left={0}
       maxHeight="115px"
