@@ -10,6 +10,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import ContactCard from '../components/ContactCard';
 import contactDesktop from '../public/images/contact-background-desktop.png';
@@ -20,6 +21,7 @@ import { Close } from '../components/Icons';
 
 const Contact: NextPage = () => {
   const { isMobile } = useAppDimensions();
+  const { t } = useTranslation('contact');
 
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState('');
@@ -43,7 +45,7 @@ const Contact: NextPage = () => {
 
   if (isMobile) {
     return (
-      <Layout pageTitle="Contact me" centered>
+      <Layout pageTitle={t('page-title')} centered>
         <Snackbar
           anchorOrigin={alertAnchor}
           autoHideDuration={3000}
@@ -104,7 +106,7 @@ const Contact: NextPage = () => {
               variant="h2"
               zIndex={2}
             >
-              contact me
+              {t('title')}
             </Typography>
           </Stack>
 
@@ -119,7 +121,7 @@ const Contact: NextPage = () => {
   }
 
   return (
-    <Layout pageTitle="Contact me" centered>
+    <Layout pageTitle={t('page-title')} centered>
       <Snackbar
         anchorOrigin={alertAnchor}
         autoHideDuration={3000}
@@ -191,7 +193,7 @@ const Contact: NextPage = () => {
             variant="h2"
             zIndex={2}
           >
-            contact me
+            {t('title')}
           </Typography>
           <ContactCard
             setMessage={setMessage}

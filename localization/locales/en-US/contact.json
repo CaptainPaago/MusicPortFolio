@@ -1,0 +1,13 @@
+{
+  "page-title": "Contact me",
+  "title": "contact me",
+  "form-title": "contact form",
+  "form-name": "your name",
+  "form-email": "your email",
+  "form-message": "message",
+  "form-button": "send email",
+  "error-email": "please enter a valid email",
+  "error-required-email": "please add your email",
+  "error-required-name": "please add your name",
+  "error-required-message": "please write a message"
+}

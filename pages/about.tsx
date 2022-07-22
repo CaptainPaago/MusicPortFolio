@@ -6,20 +6,18 @@ import { useTranslation } from 'react-i18next';
 
 import aboutMobile from '../public/images/about-me-photo-mobile.png';
 import Layout from '../components/Layout';
-// import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 import aboutDesktop from '../public/images/about-me-photo-desktop.png';
 
 const About: NextPage = () => {
   const { isMobile } = useAppDimensions();
-  // const colors = Theme.palette;
   const { t } = useTranslation('about');
 
   const about: string[] = t('body', { returnObjects: true });
 
   if (isMobile) {
     return (
-      <Layout pageTitle="About me" centered>
+      <Layout pageTitle={t('page-title')} centered>
         <Stack
           flex={1}
           id="about-container"

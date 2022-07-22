@@ -1,0 +1,13 @@
+{
+  "page-title": "Contacte-me",
+  "title": "contacte-me",
+  "form-title": "formolário de contact",
+  "form-name": "o seu nome",
+  "form-email": "o seu email",
+  "form-message": "menssagem",
+  "form-button": "enviar email",
+  "error-email": "por favor user um email válido",
+  "error-required-email": "é necessário um email",
+  "error-required-name": "é necessário um nome",
+  "error-required-message": "é necessária uma menssagem"
+}

@@ -3,6 +3,7 @@ import { Button, Stack, TextField, Typography } from '@mui/material';
 import { send } from 'emailjs-com';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
@@ -20,14 +21,15 @@ export default function ContactCard({
   setOpen,
 }: Props) {
   const { isMobile } = useAppDimensions();
+  const { t, i18n } = useTranslation('contact');
 
   const validationSchema = yup.object({
     reply_to: yup
       .string()
-      .email('enter a valid email')
-      .required('email is required'),
-    message: yup.string().required('please type a message'),
-    from_name: yup.string().required('please add your name'),
+      .email(t('error-email'))
+      .required(t('error-required-email')),
+    message: yup.string().required(t('error-required-message')),
+    from_name: yup.string().required(t('error-required-name')),
   });
 
   const colors = Theme.palette;
@@ -76,7 +78,7 @@ export default function ContactCard({
         zIndex={5}
       >
         <Typography color="white.200" variant={isMobile ? 'h5' : 'h4'}>
-          contact form
+          {t('form-title')}
         </Typography>
 
         <Formik
@@ -112,110 +114,120 @@ export default function ContactCard({
             }
           }}
         >
-          {(props) => (
-            <Stack
-              direction="column"
-              spacing={isMobile ? '10px' : '20px'}
-              zIndex={5}
-            >
-              <Stack width="100%">
-                <TextField
-                  placeholder="your name"
-                  variant="outlined"
-                  InputProps={inputProps}
-                  type="text"
-                  name="from_name"
-                  value={props.values.from_name}
-                  onChange={props.handleChange}
-                  fullWidth
-                  required
-                  onBlur={() => {
-                    props.setFieldTouched('from_name');
-                  }}
-                />
-                <ErrorMessage name="from_name">
-                  {(msg) => (
-                    <Typography color="error.main" variant="subtitle2">
-                      {msg}
-                    </Typography>
-                  )}
-                </ErrorMessage>
-              </Stack>
+          {(props) => {
+            const { errors, setFieldTouched } = props;
 
-              <Stack width="100%">
-                <TextField
-                  variant="outlined"
-                  InputProps={inputProps}
-                  type="text"
-                  name="reply_to"
-                  placeholder="your email"
-                  value={props.values.reply_to}
-                  onChange={props.handleChange}
-                  fullWidth
-                  required
-                  onBlur={() => {
-                    props.setFieldTouched('reply_to');
-                  }}
-                />
-                <ErrorMessage
-                  name="reply_to"
-                  render={(msg) => (
-                    <Typography color="error.main" variant="subtitle2">
-                      {msg}
-                    </Typography>
-                  )}
-                />
-              </Stack>
+            i18n.on('languageChanged', () => {
+              Object.keys(errors).forEach((fieldName) => {
+                setFieldTouched(fieldName);
+              });
+            });
 
-              <Stack width="100%">
-                <TextField
-                  placeholder="message"
-                  variant="outlined"
-                  multiline
-                  rows={4}
-                  InputProps={inputProps}
-                  type="text"
-                  name="message"
-                  value={props.values.message}
-                  onChange={props.handleChange}
-                  fullWidth
-                  required
-                  onBlur={() => {
-                    props.setFieldTouched('message');
-                  }}
-                />
-                <ErrorMessage name="message">
-                  {(msg) => (
-                    <Typography color="error.main" variant="subtitle2">
-                      {msg}
-                    </Typography>
-                  )}
-                </ErrorMessage>
-              </Stack>
-
-              <Button
-                color="primary"
-                variant="contained"
-                sx={{
-                  width: isMobile ? '100%' : '100%',
-                  alignSelf: 'center',
-                }}
-                onClick={() => {
-                  props.setSubmitting(true);
-                  props.submitForm();
-                }}
-                disabled={!props.isValid || props.isSubmitting}
+            return (
+              <Stack
+                direction="column"
+                spacing={isMobile ? '10px' : '20px'}
+                zIndex={5}
               >
-                <Typography
-                  variant={isMobile ? 'h6' : 'h5'}
-                  className="Roboto"
-                  marginY={isMobile ? 0 : '5px'}
+                <Stack width="100%">
+                  <TextField
+                    placeholder={t('form-name')}
+                    variant="outlined"
+                    InputProps={inputProps}
+                    type="text"
+                    name="from_name"
+                    value={props.values.from_name}
+                    onChange={props.handleChange}
+                    fullWidth
+                    required
+                    onBlur={() => {
+                      props.setFieldTouched('from_name');
+                    }}
+                  />
+                  <ErrorMessage name="from_name">
+                    {(msg) => (
+                      <Typography color="error.main" variant="subtitle2">
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Stack>
+
+                <Stack width="100%">
+                  <TextField
+                    variant="outlined"
+                    InputProps={inputProps}
+                    type="text"
+                    name="reply_to"
+                    placeholder={t('form-email')}
+                    value={props.values.reply_to}
+                    onChange={props.handleChange}
+                    fullWidth
+                    required
+                    onBlur={() => {
+                      props.setFieldTouched('reply_to');
+                    }}
+                  />
+                  <ErrorMessage
+                    name="reply_to"
+                    render={(msg) => (
+                      <Typography color="error.main" variant="subtitle2">
+                        {msg}
+                      </Typography>
+                    )}
+                  />
+                </Stack>
+
+                <Stack width="100%">
+                  <TextField
+                    placeholder={t('form-message')}
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    InputProps={inputProps}
+                    type="text"
+                    name="message"
+                    value={props.values.message}
+                    onChange={props.handleChange}
+                    fullWidth
+                    required
+                    onBlur={() => {
+                      props.setFieldTouched('message');
+                    }}
+                  />
+                  <ErrorMessage name="message">
+                    {(msg) => (
+                      <Typography color="error.main" variant="subtitle2">
+                        {msg}
+                      </Typography>
+                    )}
+                  </ErrorMessage>
+                </Stack>
+
+                <Button
+                  color="primary"
+                  variant="contained"
+                  sx={{
+                    width: isMobile ? '100%' : '100%',
+                    alignSelf: 'center',
+                  }}
+                  onClick={() => {
+                    props.setSubmitting(true);
+                    props.submitForm();
+                  }}
+                  disabled={!props.isValid || props.isSubmitting}
                 >
-                  send email
-                </Typography>
-              </Button>
-            </Stack>
-          )}
+                  <Typography
+                    variant={isMobile ? 'h6' : 'h5'}
+                    className="Roboto"
+                    marginY={isMobile ? 0 : '5px'}
+                  >
+                    {t('form-button')}
+                  </Typography>
+                </Button>
+              </Stack>
+            );
+          }}
         </Formik>
       </Stack>
     </Stack>
