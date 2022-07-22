@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button, Stack, Typography } from '@mui/material';
 import Popover from '@mui/material/Popover';
+import { useTranslation } from 'react-i18next';
 
 import {
   Instagram,
@@ -15,6 +16,7 @@ import Theme from '../../app/Theme';
 
 const FooterDesktop = () => {
   const colors = Theme.palette;
+  const { i18n } = useTranslation();
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -30,6 +32,14 @@ const FooterDesktop = () => {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+
+  const handleLanguage = () => {
+    if (i18n.language === 'pt-PT') {
+      i18n.changeLanguage('en-US');
+    } else {
+      i18n.changeLanguage('pt-PT');
+    }
+  };
 
   const Links = () => (
     <Popover
@@ -118,10 +128,18 @@ const FooterDesktop = () => {
         </Button>
         <Typography color="white.main">|</Typography>
         <Button
-          onClick={() => console.log('localization')}
-          endIcon={<Portugal size={15} />}
+          onClick={handleLanguage}
+          endIcon={
+            i18n.language === 'en-US' ? (
+              <Portugal size={20} />
+            ) : (
+              <UK size={20} />
+            )
+          }
         >
-          <Typography color="white.main">português</Typography>
+          <Typography color="white.main">
+            {i18n.language === 'en-US' ? 'português' : 'english'}
+          </Typography>
         </Button>
       </Stack>
     </Stack>

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 
+import '../localization/i18n';
 import BGImage from '../components/BGImage';
 import FooterDesktop from '../components/footer/FooterDesktop';
 import FooterMobile from '../components/footer/FooterMobile';
@@ -17,7 +18,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { isMobile } = useAppDimensions();
   const router = useRouter();
 
+  const [mounted, setMounted] = React.useState(false);
   const [bgColor, setBgColor] = React.useState('');
+
+  React.useEffect(() => setMounted(true), []);
+
   const { black } = Theme.palette;
 
   React.useEffect(() => {
@@ -31,6 +36,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         break;
     }
   }, [router, black]);
+
+  //fix for "Unhandled Runtime Error Error: Hydration failed"
+  if (!mounted) return null;
 
   return (
     <>

@@ -1,6 +1,10 @@
 {
   "title": "violin player",
-  "links": ["my work", "about", "contact"],
+  "links": [
+    { "title": "my work", "link": "my-work" },
+    { "title": "about", "link": "about" },
+    { "title": "contact", "link": "contact" }
+  ],
   "blurb": "Professional violinist based in Gothenburg. Experienced in orchestra, chamber music and teaching.",
   "cvButton": "view my cv"
 }

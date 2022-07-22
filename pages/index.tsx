@@ -2,20 +2,21 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import Layout from '../components/Layout';
-import {
-  title,
-  links,
-  blurb,
-  cvButton,
-} from '../localization/locales/en-US/landing.json';
-// import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 
 const Home: NextPage = () => {
   const { isMobile } = useAppDimensions();
-  // const colors = Theme.palette;
+  const { t } = useTranslation('landing');
+
+  type LinkProps = {
+    title: string;
+    link: string;
+  };
+
+  const links: LinkProps[] = t('links', { returnObjects: true });
 
   return (
     <Layout pageTitle="Inês Cruz" centered>
@@ -27,13 +28,13 @@ const Home: NextPage = () => {
           marginBottom={isMobile ? 0 : '40px'}
         >
           <Typography color="white.main" variant={isMobile ? 'h3' : 'h2'}>
-            {title}
+            {t('title')}
           </Typography>
 
           <Stack direction="row" spacing="5px">
-            {links.map((title, index) => (
+            {links.map(({ title, link }, index) => (
               <Stack key={index} direction="row" spacing="5px">
-                <Link href={`/${title.replace(' ', '-')}`}>
+                <Link href={`/${link}`}>
                   <a>
                     <Typography
                       color="white.main"
@@ -59,7 +60,7 @@ const Home: NextPage = () => {
           <Box bgcolor="white.main" width="100%" height="1px" />
 
           <Typography color="white.main" variant="body1" className="Roboto">
-            {blurb}
+            {t('blurb')}
           </Typography>
 
           <Button
@@ -75,7 +76,7 @@ const Home: NextPage = () => {
               className="Roboto"
               marginY={isMobile ? 0 : '5px'}
             >
-              {cvButton}
+              {t('cvButton')}
             </Typography>
           </Button>
         </Stack>

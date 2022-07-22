@@ -1,0 +1,10 @@
+{
+  "title": "violinista",
+  "links": [
+    { "title": "o meu trabalho", "link": "my-work" },
+    { "title": "sobre mim", "link": "about" },
+    { "title": "contacto", "link": "contact" }
+  ],
+  "blurb": "Violinista profissional a viver em Gotemburgo. Experiente em orquestra, musica de câmara e educação.",
+  "cvButton": "ver o meu currículo"
+}
