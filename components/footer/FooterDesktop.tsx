@@ -15,7 +15,7 @@ import {
 import Theme from '../../app/Theme';
 
 const FooterDesktop = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation('footer');
   const colors = Theme.palette;
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -113,7 +113,7 @@ const FooterDesktop = () => {
         <Link href="/contact">
           <a>
             <Button>
-              <Typography color="white.main">contact me</Typography>
+              <Typography color="white.main">{t('contact')}</Typography>
             </Button>
           </a>
         </Link>
@@ -124,7 +124,7 @@ const FooterDesktop = () => {
           variant="text"
           endIcon={<ListArrow color={colors.white.main} size={15} />}
         >
-          <Typography color="white.main">links</Typography>
+          <Typography color="white.main">{t('links')}</Typography>
         </Button>
         <Typography color="white.main">|</Typography>
         <Button

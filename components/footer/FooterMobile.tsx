@@ -7,7 +7,7 @@ import { Instagram, LinkedIn, Facebook, Portugal, UK } from '../Icons';
 import Theme from '../../app/Theme';
 
 const FooterMobile = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation('footer');
   const colors = Theme.palette;
 
   const [state, setState] = React.useState({
@@ -95,13 +95,13 @@ const FooterMobile = () => {
         <Link href="/contact">
           <a>
             <Button>
-              <Typography color="white.main">contact me</Typography>
+              <Typography color="white.main">{t('contact')}</Typography>
             </Button>
           </a>
         </Link>
         <Typography color="white.main">|</Typography>
         <Button onClick={toggleDrawer('bottom', true)}>
-          <Typography color="white.main">links</Typography>
+          <Typography color="white.main">{t('links')}</Typography>
         </Button>
         <Drawer
           anchor={'bottom'}
