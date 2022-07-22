@@ -3,7 +3,14 @@ import Link from 'next/link';
 import { Button, Stack, Typography } from '@mui/material';
 import Popover from '@mui/material/Popover';
 
-import { Instagram, LinkedIn, ListArrow, Facebook } from '../Icons';
+import {
+  Instagram,
+  LinkedIn,
+  ListArrow,
+  Facebook,
+  Portugal,
+  UK,
+} from '../Icons';
 import Theme from '../../app/Theme';
 
 const FooterDesktop = () => {
@@ -105,12 +112,15 @@ const FooterDesktop = () => {
           aria-describedby={id}
           onClick={handleClick}
           variant="text"
-          endIcon={<ListArrow color={colors.white.main} size={20} />}
+          endIcon={<ListArrow color={colors.white.main} size={15} />}
         >
           <Typography color="white.main">links</Typography>
         </Button>
         <Typography color="white.main">|</Typography>
-        <Button onClick={() => console.log('localization')}>
+        <Button
+          onClick={() => console.log('localization')}
+          endIcon={<Portugal size={15} />}
+        >
           <Typography color="white.main">português</Typography>
         </Button>
       </Stack>
