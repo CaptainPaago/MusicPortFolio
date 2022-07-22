@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 // import NavbarMenu from './NavbarMenu';
 import Theme from '../../app/Theme';
@@ -18,6 +19,7 @@ import {
 export default function Navbar() {
   const { maxWidthDesktop, paddingXDesktop } = useAppDimensions();
   const router = useRouter();
+  const { t, i18n } = useTranslation('navbar');
 
   const colors = Theme.palette;
 
@@ -68,9 +70,9 @@ export default function Navbar() {
             marginTop="4px"
           >
             {[
-              { title: 'my work', link: '/my-work' },
-              { title: 'about', link: '/about' },
-              { title: 'contact', link: '/contact' },
+              { title: t('my-work'), link: '/my-work' },
+              { title: t('about'), link: '/about' },
+              { title: t('contact'), link: '/contact' },
             ].map(({ title, link }, index) => (
               <Stack key={index} direction="row" spacing="10px">
                 <Stack direction="column" alignItems="center">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, Drawer, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 import Link from 'next/link';
 import Theme from '../../app/Theme';
@@ -17,6 +18,7 @@ import {
 export default function Navbar() {
   const router = useRouter();
   const { paddingXMobile } = useAppDimensions();
+  const { t, i18n } = useTranslation('navbar');
 
   const [open, setOpen] = React.useState(false);
 
@@ -100,9 +102,9 @@ export default function Navbar() {
             <Stack direction="column" alignItems="flex-start" spacing="10px">
               <Stack direction="column" alignItems="flex-start">
                 {[
-                  { title: 'my work', link: '/my-work' },
-                  { title: 'about', link: '/about' },
-                  { title: 'contact', link: '/contact' },
+                  { title: t('my-work'), link: '/my-work' },
+                  { title: t('about'), link: '/about' },
+                  { title: t('contact'), link: '/contact' },
                 ].map(({ title, link }, index) => (
                   <Stack direction="column" alignItems="center" key={index}>
                     <Button>
