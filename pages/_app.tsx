@@ -6,7 +6,8 @@ import { Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 
 import BGImage from '../components/BGImage';
-import Footer from '../components/Footer';
+import FooterDesktop from '../components/footer/FooterDesktop';
+import FooterMobile from '../components/footer/FooterMobile';
 import NavbarDesktop from '../components/navbar/NavbarDesktop';
 import NavbarMobile from '../components/navbar/NavbarMobile';
 import Theme from '../app/Theme';
@@ -64,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
           </Stack>
           <Component {...pageProps} />
-          <Footer />
+          {isMobile ? <FooterMobile /> : <FooterDesktop />}
         </Stack>
 
         <Stack

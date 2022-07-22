@@ -146,3 +146,20 @@ export function Phone({ size, color }: IconProps) {
     </svg>
   );
 }
+
+export function ListArrow({ size, color }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M31.4092 42.3529L12.2229 21.3394C11.7541 20.8259 12.1184 20 12.8137 20H51.1863C51.8816 20 52.2459 20.8259 51.7771 21.3394L32.5908 42.3529C32.2736 42.7004 31.7264 42.7004 31.4092 42.3529Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
