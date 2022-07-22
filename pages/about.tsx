@@ -2,10 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import type { NextPage } from 'next';
 import { Box, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import aboutMobile from '../public/images/about-me-photo-mobile.png';
 import Layout from '../components/Layout';
-import { body as about } from '../localization/locales/pt-PT/about.json';
 // import Theme from '../app/Theme';
 import useAppDimensions from '../hooks/useAppDimensions';
 import aboutDesktop from '../public/images/about-me-photo-desktop.png';
@@ -13,6 +13,9 @@ import aboutDesktop from '../public/images/about-me-photo-desktop.png';
 const About: NextPage = () => {
   const { isMobile } = useAppDimensions();
   // const colors = Theme.palette;
+  const { t } = useTranslation('about');
+
+  const about: string[] = t('body', { returnObjects: true });
 
   if (isMobile) {
     return (
@@ -52,7 +55,7 @@ const About: NextPage = () => {
               variant="h2"
               zIndex={2}
             >
-              about me
+              {t('title')}
             </Typography>
           </Stack>
 
@@ -118,7 +121,7 @@ const About: NextPage = () => {
           variant="h2"
           zIndex={2}
         >
-          about me
+          {t('title')}
         </Typography>
 
         {about.map((paragraph, index) => (

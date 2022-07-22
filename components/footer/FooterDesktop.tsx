@@ -15,8 +15,8 @@ import {
 import Theme from '../../app/Theme';
 
 const FooterDesktop = () => {
-  const colors = Theme.palette;
   const { i18n } = useTranslation();
+  const colors = Theme.palette;
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null

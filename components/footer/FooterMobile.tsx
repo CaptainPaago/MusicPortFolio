@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button, Drawer, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
-import { Instagram, LinkedIn, Facebook } from '../Icons';
+import { Instagram, LinkedIn, Facebook, Portugal, UK } from '../Icons';
 import Theme from '../../app/Theme';
 
 const FooterMobile = () => {
+  const { i18n } = useTranslation();
   const colors = Theme.palette;
 
   const [state, setState] = React.useState({
@@ -25,6 +27,14 @@ const FooterMobile = () => {
 
       setState({ ...state, [anchor]: open });
     };
+
+  const handleLanguage = () => {
+    if (i18n.language === 'pt-PT') {
+      i18n.changeLanguage('en-US');
+    } else {
+      i18n.changeLanguage('pt-PT');
+    }
+  };
 
   const Links = () => (
     <Stack
@@ -108,13 +118,20 @@ const FooterMobile = () => {
           <Links />
         </Drawer>
         <Typography color="white.main">|</Typography>
-        <Link href="/my-work">
-          <a>
-            <Button onClick={() => console.log('change language')}>
-              <Typography color="white.main">português</Typography>
-            </Button>
-          </a>
-        </Link>
+        <Button
+          onClick={handleLanguage}
+          endIcon={
+            i18n.language === 'en-US' ? (
+              <Portugal size={15} />
+            ) : (
+              <UK size={15} />
+            )
+          }
+        >
+          <Typography color="white.main">
+            {i18n.language === 'en-US' ? 'português' : 'english'}
+          </Typography>
+        </Button>
       </Stack>
     </Stack>
   );
