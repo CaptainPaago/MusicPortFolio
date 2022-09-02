@@ -63,22 +63,29 @@ const Home: NextPage = () => {
             {t('blurb')}
           </Typography>
 
-          <Button
-            color="primary"
-            variant="contained"
-            sx={{
-              width: isMobile ? '60%' : '100%',
-              alignSelf: 'center',
-            }}
-          >
-            <Typography
-              variant={isMobile ? 'h6' : 'h5'}
-              className="Roboto"
-              marginY={isMobile ? 0 : '5px'}
+          <Link href="/docs/CV_Ines_Cruz_Violin.pdf">
+            <a
+              target="_blank"
+              style={{ display: 'flex', justifyContent: 'center' }}
             >
-              {t('cvButton')}
-            </Typography>
-          </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                sx={{
+                  width: isMobile ? '60%' : '100%',
+                  alignSelf: 'center',
+                }}
+              >
+                <Typography
+                  variant={isMobile ? 'h6' : 'h5'}
+                  className="Roboto"
+                  marginY={isMobile ? 0 : '5px'}
+                >
+                  {t('cvButton')}
+                </Typography>
+              </Button>
+            </a>
+          </Link>
         </Stack>
       </Stack>
     </Layout>
