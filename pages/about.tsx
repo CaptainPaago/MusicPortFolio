@@ -26,25 +26,24 @@ const About: NextPage = () => {
           direction="column"
           spacing="10px"
           width="100%"
-          // display="block"
         >
           <Box
-            // zIndex={0}
+            zIndex={0}
             style={{
               filter: 'blur(0.4px)',
               height: '297px',
               width: '100vw',
             }}
             marginX="-15px"
-            position="sticky"
-            top={1}
+            position="relative"
+            top={0}
           >
             <Image
               src={aboutMobile.src}
               alt="about-page-background"
               layout="fill"
               objectFit="contain"
-              // loading="lazy"
+              loading="lazy"
             />
           </Box>
 
