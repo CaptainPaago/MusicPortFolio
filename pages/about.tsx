@@ -29,22 +29,22 @@ const About: NextPage = () => {
           // display="block"
         >
           <Box
-            zIndex={0}
+            // zIndex={0}
             style={{
               filter: 'blur(0.4px)',
               height: '297px',
               width: '100vw',
             }}
             marginX="-15px"
-            position="relative"
-            top={0}
+            position="sticky"
+            top={1}
           >
             <Image
               src={aboutMobile.src}
               alt="about-page-background"
               layout="fill"
               objectFit="contain"
-              loading="lazy"
+              // loading="lazy"
             />
           </Box>
 
