@@ -26,7 +26,7 @@ const About: NextPage = () => {
           direction="column"
           spacing="10px"
           width="100%"
-          display="block"
+          // display="block"
         >
           <Box
             zIndex={0}
