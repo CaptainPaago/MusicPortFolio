@@ -36,6 +36,8 @@ const About: NextPage = () => {
               width: '100vw',
             }}
             marginX="-15px"
+            position="relative"
+            top={0}
           >
             <Image
               src={aboutMobile.src}

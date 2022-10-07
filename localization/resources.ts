@@ -1,3 +1,6 @@
+import workEn from './locales/en-US/work.json';
+import workPt from './locales/pt-PT/work.json';
+
 import aboutEn from './locales/en-US/about.json';
 import aboutPt from './locales/pt-PT/about.json';
 
@@ -16,6 +19,7 @@ import footerPt from './locales/pt-PT/footer.json';
 const resources = {
   'en-US': {
     landing: landingEn,
+    work: workEn,
     about: aboutEn,
     contact: contactEn,
     footer: footerEn,
@@ -23,6 +27,7 @@ const resources = {
   },
   'pt-PT': {
     landing: landingPt,
+    work: workPt,
     about: aboutPt,
     contact: contactPt,
     footer: footerPt,
