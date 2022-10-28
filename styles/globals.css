@@ -47,7 +47,7 @@ a {
 }
 
 .Roboto {
-  font-family: Roboto, sans-serif;
+  font-family: Roboto, sans-serif !important;
 }
 
 #navbar-desktop-gradient {
