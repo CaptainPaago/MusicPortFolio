@@ -14,7 +14,7 @@ export default function useOdinDimensions() {
     }
   }, []);
 
-  const marginBotttom = isMobile ? '50px' : '80px';
+  const marginBottom = isMobile ? '50px' : '80px';
   const maxWidthDesktop = '1600px';
   const paddingTopDesktop = '120px';
   const paddingTopMobile = '90px';
@@ -23,7 +23,7 @@ export default function useOdinDimensions() {
 
   return {
     isMobile,
-    marginBotttom,
+    marginBottom,
     maxWidthDesktop,
     paddingTopDesktop,
     paddingTopMobile,
