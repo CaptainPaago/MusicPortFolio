@@ -57,14 +57,14 @@ export default function ContactCard({
         <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
           <Email color={colors.white.main} size={isMobile ? 25 : 35} />
           <Typography color="white.main" variant={isMobile ? 'h5' : 'h4'}>
-            violino.ines95@gmail.com
+            cardinaljaydi@gmail.com
           </Typography>
         </Stack>
 
         <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
           <Phone color={colors.white.main} size={isMobile ? 25 : 35} />
           <Typography color="white.main" variant={isMobile ? 'h5' : 'h4'}>
-            +46 072 831 07 29
+            +234-913-903-8815
           </Typography>
         </Stack>
       </Stack>

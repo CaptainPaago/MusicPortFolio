@@ -1,10 +1,10 @@
 {
-  "title": "violin player",
+  "title": "Artiste",
   "links": [
     { "title": "my work", "link": "my-work" },
     { "title": "about", "link": "about" },
     { "title": "contact", "link": "contact" }
   ],
-  "blurb": "Professional violinist based in Gothenburg. Experienced in orchestra, chamber music and teaching.",
-  "cvButton": "view my cv"
+  "blurb": "Alte artist based in Port-Harcourt. Experienced in writing, rapping and radio presentation.",
+  "cvButton": "view my projects"
 }

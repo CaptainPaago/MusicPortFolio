@@ -48,7 +48,7 @@ export default function Navbar() {
         <Link href="/">
           <a>
             <Typography color="white.main" variant="h3">
-              Inês Cruz
+              JordyTheFourth
             </Typography>
           </a>
         </Link>

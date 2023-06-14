@@ -1,10 +1,10 @@
 {
-  "title": "violinista",
+  "title": "artiste",
   "links": [
-    { "title": "o meu trabalho", "link": "my-work" },
-    { "title": "sobre mim", "link": "about" },
-    { "title": "contacto", "link": "contact" }
+    { "title": "mon travail", "link": "my-work" },
+    { "title": "a propos", "link": "about" },
+    { "title": "contact", "link": "contact" }
   ],
-  "blurb": "Violinista profissional a viver em Gotemburgo. Experiente em orquestra, musica de câmara e educação.",
-  "cvButton": "ver o meu currículo"
+  "blurb": "Alte artiste basé à Port-Harcourt. Expérimenté dans l'écriture, le rap et la présentation radio.",
+  "cvButton": "voir mes projets"
 }
