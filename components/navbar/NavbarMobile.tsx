@@ -127,19 +127,19 @@ export default function Navbar() {
               <Box width="100%" height="1px" bgcolor="white.main" />
 
               <Stack className="user-link" direction="row" spacing="5px">
-                {[
-                  {
-                    icon: <Instagram color={colors.white.main} size={35} />,
-                    link: 'https://www.instagram.com/ines.cruz.8/?hl=en',
-                  },
-                  {
-                    icon: <LinkedIn color={colors.white.main} size={35} />,
-                    link: 'https://www.linkedin.com/in/in%C3%AAs-cruz-03b9b1133/',
-                  },
-                  {
-                    icon: <Facebook color={colors.white.main} size={35} />,
-                    link: 'https://www.facebook.com/ines.cruz.77',
-                  },
+              {[
+            {
+              icon: <Instagram color={colors.white.main} size={35} />,
+              link: 'https://www.instagram.com/jordi.the.fourth',
+            },
+            {
+              icon: <LinkedIn color={colors.white.main} size={35} />,
+              link: 'https://www.twitter.com/in/paago_dotgram',
+            },
+            {
+              icon: <Facebook color={colors.white.main} size={35} />,
+              link: 'https://www.facebook.com/paago.dotgram.5',
+            }
                 ].map(({ icon, link }, index) => (
                   <Link href={link} key={index}>
                     <a target="_blank">{icon}</a>
