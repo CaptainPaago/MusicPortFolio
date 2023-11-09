@@ -64,7 +64,7 @@ export default function ContactCard({
         <Stack direction="row" spacing={isMobile ? '10px' : '15px'}>
           <Phone color={colors.white.main} size={isMobile ? 25 : 35} />
           <Typography color="white.main" variant={isMobile ? 'h5' : 'h4'}>
-            +234-913-903-8815
+            0913-903-8815
           </Typography>
         </Stack>
       </Stack>
